@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Config/*": ["./config/*"],
+      "Components/*": ["./components/*"],
+      "Consts/*": ["./assets/consts/*"],
+      "Services/*": ["./services/*"],
+      "Ducks/*": ["./ducks/*"],
+      "Ui/*": ["./ui/*"],
+      "App/*": ["./*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
