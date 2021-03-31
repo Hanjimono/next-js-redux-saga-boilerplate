@@ -1,0 +1,13 @@
+.alert-modal {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .alert-text {
+    margin-bottom: 42px;
+    overflow: auto;
+    padding-right: 40px;
+    padding-bottom: 10px;
+  }
+  .button-line {
+  }
+}

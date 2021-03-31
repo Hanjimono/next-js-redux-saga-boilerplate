@@ -78,6 +78,12 @@ export const anketAcceptFormSelector = createSelector(
 	formSelector,
 	(state) => state.acceptForm
 )
+
+export const fetchingSelector = createSelector(
+	moduleSelector,
+	(state) => state.fetching
+)
+
 export const modalListSelector = createSelector(
 	moduleSelector,
 	(state) => state.modalList
@@ -86,6 +92,11 @@ export const modalListSelector = createSelector(
 export const authenticatedSelector = createSelector(
 	moduleSelector,
 	(state) => state.authenticated
+)
+
+export const overlayFetchingSelector = createSelector(
+	moduleSelector,
+	(state) => state.overlayFetching
 )
 
 /**

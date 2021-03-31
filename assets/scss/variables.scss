@@ -182,11 +182,11 @@ $tooltipShowFontColor: $textColor;
 $tooltipShowFontSize: 14px;
 $tooltipShowLineHeight: 17px;
 //modal
-$modalWidth: 790px;
+$modalWidth: 300px;
 $modalMaxHeight: 595px;
-$modalHeaderPadding: 0 20px 0 87px;
-$modalHeaderTitleMarginTop: 40px;
-$modalContentPadding: 12px 87px 55px 87px;
+$modalHeaderPadding: 0 20px 0 20px;
+$modalHeaderTitleMarginTop: 0px;
+$modalContentPadding: 12px 20px 20px 20px;
 $modalCloseColor: $additionalColor;
 $modalCloseColorHover: $additionalColorHover;
 //note

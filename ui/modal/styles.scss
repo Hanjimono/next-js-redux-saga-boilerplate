@@ -34,7 +34,7 @@
   .modal-body-container {
     display: flex;
     min-height: 40px;
-    min-width: 400px;
+    min-width: 300px;
     flex-direction: column;
     background-color: $blockColor;
     z-index: 5555;
@@ -59,6 +59,10 @@
         line-height: 28px;
         align-items: center;
         display: flex;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: normal;
+        white-space: nowrap;
         
         h4{
           line-height: 40px;

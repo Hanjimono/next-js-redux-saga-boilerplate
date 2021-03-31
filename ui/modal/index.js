@@ -75,8 +75,11 @@ function Modal(props) {
 }
 
 Modal.propTypes = {
+	/** custom class list */
 	className: PropTypes.string,
+	/** custom class list */
 	classes: PropTypes.string,
+	/** modal content */
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(
 			PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.func])
@@ -85,10 +88,15 @@ Modal.propTypes = {
 		PropTypes.string,
 		PropTypes.func,
 	]),
+	/** modal without overlay */
 	noOverlay: PropTypes.bool,
+	/** mark modal as submodal */
 	subModal: PropTypes.bool,
+	/** when true modal will be open */
 	isOpen: PropTypes.bool,
+	/** function which will call before modal will close */
 	onCloseModal: PropTypes.func,
+	/** modal title */
 	title: PropTypes.string,
 }
 

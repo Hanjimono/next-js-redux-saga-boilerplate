@@ -25,9 +25,13 @@ function Icon(props) {
 }
 
 Icon.propTypes = {
+	/** material icon name */
 	name: PropTypes.string,
+	/** font-size for material icon and width/height for custom icon */
 	size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	/** custom class list */
 	className: PropTypes.string,
+	/** src for custom icon */
 	custom: PropTypes.string,
 }
 

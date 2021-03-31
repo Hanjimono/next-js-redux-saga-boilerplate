@@ -8,6 +8,8 @@
       "Services/*": ["./services/*"],
       "Ducks/*": ["./ducks/*"],
       "Ui/*": ["./ui/*"],
+      "Modals/*": ["./modals/*"],
+      "Containers/*": ["./containers/*"],
       "App/*": ["./*"]
     }
   },
