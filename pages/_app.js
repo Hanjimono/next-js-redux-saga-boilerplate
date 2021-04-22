@@ -5,9 +5,7 @@ import "App/assets/scss/main.scss"
 function App({ Component, pageProps }) {
   return <>
     <div id="app">
-      <div className="total-wrapper">
-        <Component {...pageProps} />
-      </div>
+      <Component {...pageProps} />
     </div>
     <div id="modal-root"></div>
     <div id="sub-modal-root"></div>

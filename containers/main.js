@@ -11,6 +11,7 @@ import {
 import { useEventListener } from "App/services/globalEvents"
 import Loader from "App/ui/loader"
 import ModalContainer from "Containers/modalContainer"
+import Container from "ui/container"
 
 export function MainContainer(props) {
 	const {
@@ -26,14 +27,14 @@ export function MainContainer(props) {
   //check that overlay list is not empty
 	let needToShowOverlay = overlayFetching && overlayFetching.length > 0
 	return (
-		<div id="main-wrapper">
-			<div className="main-container">
+		<Container total>
+			<Container className="main-container" flex centered fixed maxHeight>
 				{needToShowOverlay && <Loader overlay fetching={true} />}
 				{!needToShowOverlay && props.children}
-			</div>
+			</Container>
 			<ModalContainer />
 			{!needToShowOverlay && <Loader mask className="main-loader" fetching={fetching} />}
-		</div>
+		</Container>
 	)
 }
 

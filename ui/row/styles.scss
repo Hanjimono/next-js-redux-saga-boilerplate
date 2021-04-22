@@ -1,0 +1,8 @@
+.row {
+    display: flex;
+    flex-direction: row;
+
+    &.grow {
+        flex: 1 1;
+    }
+}
