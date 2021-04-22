@@ -1,0 +1,104 @@
+@import "../../assets/scss/variables.scss";
+
+.select-container {
+  min-width: $fieldMiniWidth;
+
+  &.micro-select {
+    min-width: $selectMicroWidth;
+    .custom-select-container {
+      width: $selectMicroWidth;
+    }
+  }
+
+  &.no-arrow {
+    .custom-select__indicators {
+      display: none;
+    }
+    &.micro-select {
+      min-width: $selectMicroNoArrowWidth;
+      .custom-select-container {
+        width: $selectMicroNoArrowWidth;
+      }
+      .custom-select__value-container {
+        padding: 0 5px;
+      }
+      .custom-select__option {
+        padding: 2px;
+        margin: 2px;
+        width: calc(100% - 4px);
+        text-align: center;
+      }
+    }
+  }
+
+  .custom-select__indicator-separator{
+    margin-bottom: 3px;
+    margin-top: 3px;
+  }
+
+  .custom-select__control {
+    min-height: $selectHeight;
+    border-radius: $selectBorderRadius;
+    border: $selectBorder;
+    box-shadow: $selectShadow;
+
+    &:hover {
+      border: $selectHoverBorder;
+      box-shadow: $selectHoverShadow;
+    }
+
+    &:focus {
+      box-shadow: $selectHoverShadow;
+    }
+  }
+
+  .custom-select__menu {
+    margin-top: $selectMenuMarginTop;
+    box-shadow: $selectMenuShadow;
+    border: $selectMenuBorder;
+    border-radius: $selectMenuBorderRadius;
+    border-top: $selectMenuBorderTop;
+    z-index: 5;
+
+    .custom-select__option {
+      cursor: default;
+      display: block;
+      font-size: inherit;
+      padding: 8px 12px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      box-sizing: border-box;
+      margin: $selectOptionMargin;
+      width: calc(100% - #{2*$selectOptionMargin});
+      border-radius: $selectOptionBorderRadius;
+
+      &.custom-select__option--is-focused {
+        background-color: $selectOptionHover;
+      }
+
+      &.custom-select__option--is-selected {
+        background-color: $selectOptionActive;
+        color: $selectOptionActiveFontColor;
+      }
+
+      &.custom-select__option--is-fixed {
+        position: relative;
+        margin-bottom: $selectOptionFixedMargin;
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 10px;
+          border-bottom: $selectMenuBorder;
+          bottom: $selectOptionFixedBottom;
+        }
+      }
+    }
+  }
+  
+}

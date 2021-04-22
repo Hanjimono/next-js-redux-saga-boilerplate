@@ -1,0 +1,403 @@
+@import "../../assets/scss/variables.scss";
+
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: $fieldBottom;
+
+  &.less-bottom {
+    padding-bottom: $fieldLessBottom;
+  }
+
+  &.no-bottom {
+    padding-bottom: 0px;
+  }
+}
+
+.form-field-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &.with-tooltip {
+    .form-field-content-container {
+      display: flex;
+    }
+  }
+
+  .form-field-content-container {
+    position: relative;
+
+    .form-field-content_label-wrapper {
+      display: flex;
+      flex-direction: column;
+      
+      label {
+        font-size: $fieldLabelFontSize;
+        line-height: $fieldLabelLineHeight;
+        margin-bottom: $fieldLabelMarginBottom;
+      }
+    }
+
+    .tooltip-container {
+      margin-top: $fieldTooltipTopMargin;
+      margin-left: $fieldTooltipLeftMargin;
+    }
+
+    .form-field-content_element-wrapper {
+      width: fit-content;
+
+      &.whole-drag {
+        min-width: $fieldWholeDragWidth;
+        max-width: $fieldWholeDragWidth;
+
+        &.large,
+        &.medium-large,
+        &.medium,
+        &.short,
+        &.mini {
+          min-width: $fieldWholeDragWidth;
+          max-width: $fieldWholeDragWidth;
+        }
+
+        &.large .input-container{
+          min-width: $fieldLargeWidth;
+          max-width: $fieldLargeWidth;
+        }
+
+        &.medium-large .input-container{
+          min-width: $fieldMediumLargeWidth;
+          max-width: $fieldMediumLargeWidth;
+        }
+
+        &.medium .input-container{
+          min-width: $fieldMediumWidth;
+          max-width: $fieldMediumWidth;
+        }
+
+        &.short .input-container{
+          min-width: $fieldShortWidth;
+          max-width: $fieldShortWidth;
+        }
+
+        &.mini .input-container{
+          min-width: $fieldMiniWidth;
+          max-width: $fieldMiniWidth;
+        }
+
+      }
+
+      &.large {
+        min-width: $fieldLargeWidth;
+        max-width: $fieldLargeWidth;
+      }
+
+      &.medium-large {
+        min-width: $fieldMediumLargeWidth;
+        max-width: $fieldMediumLargeWidth;
+      }
+
+      &.medium {
+        min-width: $fieldMediumWidth;
+        max-width: $fieldMediumWidth;
+      }
+
+      &.short {
+        min-width: $fieldShortWidth;
+        max-width: $fieldShortWidth;
+      }
+
+      &.mini {
+        min-width: $fieldMiniWidth;
+        max-width: $fieldMiniWidth;
+      }
+    }
+  }
+
+  &.horizontal {
+    .form-field-content-container {
+
+      .form-field-content_label-wrapper {
+        flex-direction: row;
+        
+        label {
+          margin-bottom: 0;
+          margin-right: $fieldLabelMarginRight;
+          padding-top: $fieldLabelPaddingTop;
+        }
+      }
+
+      .tooltip-container {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &.dragline {
+    .tooltip-container {
+      align-items: flex-start;
+      padding-top: 5px;
+    }
+
+    .field-content-error {
+      .tooltip-container {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .field-content-error, .field-content-warning {
+    position: absolute;
+    bottom: $fieldErrorBottom;
+    left: 0;
+    right: 0;
+    text-align: right;
+    font-size: $fieldErrorFontSize;
+    color: $fieldError;
+    padding: 0px 2px;
+    overflow: hidden;
+    height: $fieldErrorHeight;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .tooltip-container {
+      margin: 0;
+      overflow: hidden;
+      width: 100%;
+
+      span {        
+        font-size: $fieldErrorFontSize;
+        color: $fieldError;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.field-line {
+  display: flex;
+  align-items: center;
+
+  .form-field-container {
+    margin-right: $fieldLineMarginRight;
+    min-width: fit-content;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.around {
+    justify-content: space-around;
+  }
+
+  &.top {
+    margin-top: 10px;
+  }
+
+  &.bottom {
+    margin-bottom: 10px;
+  }
+
+  .button {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.form-multi-field-container {
+  display: flex;
+  padding-bottom: $fieldBottom;
+      
+  label {
+    margin-bottom: 0;
+    margin-right: $fieldLabelMarginRight;
+    padding-top: $fieldLabelPaddingTop;
+    font-size: $fieldLabelFontSize;
+    line-height: $fieldLabelLineHeight;
+    display: block;
+  }
+
+  &.right-outside {
+    .form-multi-field-right-container {
+      .custom-select__control {
+        border: none;
+      }
+
+      .input-container {
+        border: none;
+      }
+      
+      .custom-select__menu {
+        left: -1px;
+        width: calc(100% + 2px);
+        border-top: $selectMenuBorder;
+      }
+    }
+  }
+
+  &.left-outside {
+    .form-multi-field-left-container {
+      .custom-select__control {
+        border: none;
+      }
+
+      .custom-select__menu {
+        left: -1px;
+        width: calc(100% + 2px);
+        border-top: $selectMenuBorder;
+      }
+
+      .input-container {
+        border: none;
+      }
+    }
+  }
+
+  
+
+  &.left-inside {
+    .form-multi-field-left-container {
+      height: calc(100% - 8px);
+      padding: 4px 0 4px 10px;
+
+      .select-container {
+        height: $selectMicroNoArrowWidth;
+        .custom-select__control {
+          min-height: $selectMicroNoArrowWidth;
+          max-height: $selectMicroNoArrowWidth;
+
+          .custom-select__value-container {
+            padding: 4px;
+            min-height: $selectMicroNoArrowWidth - 2px;
+            max-height: $selectMicroNoArrowWidth - 2px;
+          }
+        }
+      }
+    }
+  }
+
+  &.right-inside {
+    .form-multi-field-right-container {
+      height: calc(100% - 8px);
+      padding: 4px 10px 4px 0;
+
+      .select-container {
+        height: $selectMicroNoArrowWidth;
+        .custom-select__control {
+          min-height: $selectMicroNoArrowWidth;
+          max-height: $selectMicroNoArrowWidth;
+
+          .custom-select__value-container {
+            padding: 4px;
+            min-height: $selectMicroNoArrowWidth - 2px;
+            max-height: $selectMicroNoArrowWidth - 2px;
+          }
+        }
+      }
+    }
+  }
+  
+  .form-multi-field-additional-info {
+    border-left: $radioContentBorder;
+    // padding: $radioContentPadding;
+    padding: 5px;
+    padding-left: $radioContentPadding;
+    margin-top: 10px;
+  }
+
+  .form-multi-field-content {
+    display: flex;
+    min-height: $inputHeight;
+    max-height: $inputHeight;
+    border: $inputBorderSize solid $inputBorder;
+    border-radius: $inputBorderRadius;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+
+    .custom-select__control {
+      min-height: $inputHeight - 2px;
+      max-height: $inputHeight - 2px;
+    }
+
+    .input-container {
+      min-height: $inputHeight - 2px;
+      max-height: $inputHeight - 2px;
+
+      input {
+        line-height: $inputHeight - 2px;
+        max-height: $inputHeight - 2px;
+      }
+    }
+
+    .field-delimiter {
+      background-color: #C4C4C4;
+      width: 1px;
+      height: $inputHeight - 8px;
+    }
+
+    .form-multi-field-center-container {
+      .form-field-container {
+        position: initial;
+
+        .form-field-content-wrapper {
+          position: initial;
+        }
+      }
+      .custom-select__control {
+        border: none;
+      }
+
+      .input-container {
+        border: none;
+      }
+    }
+
+    .form-field-container {
+      padding-bottom: 0;
+    }
+
+    .form-multi-field-left-container {
+      .field-content-error {
+        display: none;
+      }
+    }
+
+    .form-multi-field-right-container {
+      .field-content-error {
+        display: none;
+      }
+    }
+  }
+}
+
+
+  
+.form-field-additional-info {
+  border-left: $radioContentBorder;
+  padding: $radioContentPadding;
+  padding-left: $radioContentPadding;
+  margin-top: 10px;
+}

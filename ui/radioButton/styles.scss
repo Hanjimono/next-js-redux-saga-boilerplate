@@ -1,0 +1,94 @@
+@import "../../assets/scss/variables.scss";
+
+.radio-button-container {
+  border: none;
+  align-items: center;
+  border-radius: 0;
+  min-height: $radioHeight;
+  line-height: normal;
+
+  label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-input {
+    width: $radioWidth;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked ~ .checkmark:after {
+      display: block;
+    }
+    &:checked ~ .checkmark {
+      background-color: $radioCheckedBgColor;
+    }
+  }
+
+  .checkmark {
+    height: $radioWidth;
+    width: $radioWidth;
+    min-width: $radioWidth;
+    cursor: pointer;
+    background-color: $radioBgColor;
+    margin-right: $radioLabelMargin;
+    border-radius: $radioBorderRadius;
+    border: $radioBorder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: $radioCheckMarginTop;
+    box-sizing: border-box;
+    
+    &:after {
+      content: "";
+      display: none;
+      left: $radioOkLeft;
+      top: $radioOkTop;
+      width: $radioOkWidth;
+      height: $radioOkHeight;
+      border-radius: $radioBorderRadius;
+      background: $radioOkColor;
+      box-sizing: border-box;
+    }
+  }
+
+  &:hover .radio-input ~ .checkmark {
+    background-color: $radioBgHoverColor;
+  }
+  &:hover .radio-input:checked ~ .checkmark {
+    background-color: $radioCheckedBgHoverColor;
+    &:after {
+      background: $radioOkHoverColor;
+    }
+  }
+  
+
+  &.error {
+      border: none;
+      border-radius: 0;
+      border-bottom: $inputBorderSize dotted $fieldError;
+  }
+
+  .radio-button-content {
+    margin-left: $radioWidth+$radioLabelMargin+$radioBorderSize;
+    border-left: $radioContentBorder;
+    padding-left: $radioContentPadding;
+    margin-top: $radionContentTopMargin;
+
+    &.no-border {
+      border: none;
+      padding-left: none;
+    }
+
+    &.all-border {
+      border: $radioContentBorder;
+      padding: $radioContentPadding;
+    }
+  }
+
+}
