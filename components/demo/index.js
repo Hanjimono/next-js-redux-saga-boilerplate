@@ -13,13 +13,13 @@ function Demo(props) {
   const onOpenModalClick = () => popup("alert", {title: "Alert", text: "This is an alert modal"})
   return (
     <Container flex maxHeight>
-      <Row>
-        <Col></Col>
+      <Row basis={1/3}>
+        <Col basis={1/2}></Col>
         <Col></Col>
         <Col></Col>
       </Row>
       <DemoForm />
-      <Row noGrow>
+      <Row>
         <Col>
           <ButtonLine>
             <Button onClick={onOpenModalClick} disabled>

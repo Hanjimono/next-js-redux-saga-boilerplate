@@ -5,4 +5,8 @@
     &.grow {
         flex: 1 1;
     }
+
+    &.with-basis {
+        flex-grow: 0;
+    }
 }
