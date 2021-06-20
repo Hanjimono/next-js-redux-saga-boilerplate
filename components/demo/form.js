@@ -8,7 +8,7 @@ function DemoForm(props) {
   const handleChange = (e) => {
   }
   return (
-    <Field label="Text input without redux" noRedux>
+    <Field label="Text input without redux" type="text" noRedux>
       <Input label="Text input without redux" name="first-input" type="text" onChange={handleChange} />
     </Field>
   )

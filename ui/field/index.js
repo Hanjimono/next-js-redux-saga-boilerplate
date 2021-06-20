@@ -36,7 +36,7 @@ export function Field(props) {
 	let content = !!component ? component : FieldContent
 	return (
 		<div className={newClasses}>
-			{noRedux && children}
+			{noRedux && content}
 			{!noRedux && (
 				<ReduxField
 					name={name}
