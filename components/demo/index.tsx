@@ -25,7 +25,7 @@ function Demo(props) {
             <Button onClick={onOpenModalClick} disabled>
               Disabled Open modal
             </Button>
-            <Button icon="warning" onClick={onOpenModalClick}>
+            <Button noBg info icon="warning" onClick={onOpenModalClick}>
               Open alert modal
             </Button>
           </ButtonLine>
