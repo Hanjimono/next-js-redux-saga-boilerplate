@@ -18,12 +18,13 @@ import {
 	buttonInfoColorHover,
 	buttonTransparentColor,
 	buttonTransparentColorHover,
+	buttonCancelColor,
+	buttonCancelColorHover,
 } from "App/assets/scss/variables"
 import Icon from "../icon"
 import classNames from "classnames"
 import Link from "next/link"
 import Loader from "../loader"
-// import "./styles.scss"
 
 interface ButtonProps {
 	/** on click function */
@@ -76,6 +77,11 @@ const StyledButtonImage = styled.div`
 	}
 `
 
+const StyledButtonIcon = styled(Icon)`
+	color: ${buttonTextColor};
+	margin-right: 2px;
+`
+
 const StyledButton = styled.div<ButtonProps>`
 	padding: ${({ noPadding }) => (noPadding ? 0 : buttonPadding)};
 	cursor: pointer;
@@ -93,40 +99,73 @@ const StyledButton = styled.div<ButtonProps>`
 	font-weight: ${buttonFontWeight};
 	font-size: ${buttonFontSize};
 	line-height: 24px;
+	white-space: nowrap;
+	&:hover {
+		background-color: ${buttonColorHover};
+
+		${StyledButtonImage} {
+			opacity: 1;
+		}
+	}
 	${({ disabled }) =>
 		disabled &&
 		`
 		opacity: 0.7;
 		pointer-events: none;
 	`}
-	${({ noBg }) =>
+	${({ cancel }) =>
+		cancel &&
+		`
+		background-color: ${buttonCancelColor};
+
+    &:hover {
+      background-color: ${buttonCancelColorHover};
+    }
+		`}
+	${({ info }) =>
+		info &&
+		`
+		border-color: ${buttonInfoColor};
+    background-color: ${buttonInfoColor};
+
+		&:hover {
+			border-color: ${buttonInfoColorHover};
+      background-color: ${buttonInfoColorHover};
+		}
+  `}
+	${({ noBg, info, cancel }) =>
 		noBg &&
 		`
 		color: ${buttonColor};
 		background-color: transparent;
 		border: 1px solid ${buttonColor};
 		padding: ${buttonNoBgPadding};
+		color: ${info && buttonInfoColor};
+		border-color: ${info && buttonInfoColor};
+		color: ${cancel && buttonCancelColor};
+		border-color: ${cancel && buttonCancelColor};
 
 		&:hover {
 			color: ${buttonColorHover};
 			background-color: ${buttonNoBgColorHover};
 			border: 2px solid ${buttonColorHover};
 			padding: ${buttonNoBgPaddingHover};
+			color: ${info && buttonInfoColorHover};
+			border-color: ${info && buttonInfoColorHover};
+			color: ${cancel && buttonCancelColorHover};
+			border-color: ${cancel && buttonCancelColorHover};
+			${StyledButtonIcon} {
+				color: ${buttonColorHover};
+				color: ${info && buttonInfoColorHover};
+				color: ${cancel && buttonCancelColorHover};
+			}
+		}
+		${StyledButtonIcon} {
+			color: ${buttonColor};
+			color: ${info && buttonInfoColor};
+			color: ${cancel && buttonCancelColor};
 		}
 	`}
-	${({ info }) =>
-		info &&
-		`
-		color: ${buttonInfoColor};
-		border-color: ${buttonInfoColor};
-		background-color: ${buttonNoBgColorHover};
-
-		&:hover {
-			color: ${buttonInfoColorHover};
-			border-color: ${buttonInfoColorHover};
-			background-color: ${buttonNoBgColorHover};
-		}
-  `}
 	${({ link }) =>
 		!!link &&
 		`
@@ -136,69 +175,69 @@ const StyledButton = styled.div<ButtonProps>`
 			text-decoration: none;
 		}
 	`}
-	${({ transparent }) =>
+	${({ transparent, info, cancel }) =>
 		!!transparent &&
 		`
 			background-color: transparent;
 			color: ${buttonTransparentColor};
+			color: ${info && buttonInfoColor};
+			color: ${cancel && buttonCancelColor};
 
 			&:hover {
+				background-color: transparent;
 				color: ${buttonTransparentColorHover};
+				color: ${info && buttonInfoColorHover};
+				color: ${cancel && buttonCancelColorHover};
+
+				${StyledButtonIcon} {
+					color: ${buttonTransparentColorHover};
+					color: ${info && buttonInfoColorHover};
+					color: ${cancel && buttonCancelColorHover};
+				}
 			}
 
-			.button-icon {
+			${StyledButtonIcon} {
 				color: ${buttonTransparentColor};
-
-				&:hover {
-					color: ${buttonTransparentColorHover};
-				}
+				color: ${info && buttonInfoColor};
+				color: ${cancel && buttonCancelColor};
 			}
 		`}
   min-height: ${({ noText }) => noText && `22px`};
 
-	${({ wide }) =>
+	${({ wide, icon, image }) =>
 		wide &&
 		`
     text-align: center;
     width: calc(100% - 30px);
-    &.with-icon {
-      padding-left: 15px;
-    }
-
-    .button-icon {
-    }
+		flex: 1 1;
+		padding-left: ${(icon || image) && "15px"}
 	`}
-	&:hover {
-		background-color: ${buttonColorHover};
-
-		${StyledButtonImage} {
-			opacity: 1;
-		}
-	}
 `
 
-export const Button: FunctionComponent<ButtonProps> = ({
-	className,
-	classes,
-	onClick,
-	children,
-	id,
-	disabled,
-	transparent,
-	noText,
-	icon,
-	noPadding,
-	wide,
-	link,
-	cancel,
-	image,
-	iconSize = 24,
-	noBg,
-	customIcon,
-	loading,
-	info,
-	target,
-}) => {
+const StyledLinkButton = StyledButton.withComponent("a")
+
+export const Button: FunctionComponent<ButtonProps> = (props) => {
+	const {
+		className,
+		classes,
+		onClick,
+		children,
+		id,
+		disabled,
+		transparent,
+		noText,
+		icon,
+		noPadding,
+		wide,
+		link,
+		cancel,
+		image,
+		iconSize = 24,
+		noBg,
+		customIcon,
+		loading,
+		info,
+	} = props
 	const newClasses = classNames(className, classes, "button", {
 		disabled: disabled,
 		transparent: transparent,
@@ -211,22 +250,17 @@ export const Button: FunctionComponent<ButtonProps> = ({
 		"no-background": noBg,
 		info,
 	})
-	const buttonIconStyle = css`
-		color: ${buttonTextColor};
-		margin-right: 2px;
-	`
 	if (link) {
 		return (
-			<Link href={link}>
-				<a target={target} onClick={onClick} className={newClasses} id={id}>
+			<Link href={link} passHref>
+				<StyledLinkButton className={newClasses} {...props}>
 					{image && (
 						<StyledButtonImage className="button-image">
 							<img src={image} />
 						</StyledButtonImage>
 					)}
 					{icon && (
-						<Icon
-							css={buttonIconStyle}
+						<StyledButtonIcon
 							className="button-icon"
 							name={icon}
 							custom={customIcon ? icon : ""}
@@ -234,20 +268,12 @@ export const Button: FunctionComponent<ButtonProps> = ({
 						/>
 					)}
 					{children}
-				</a>
+				</StyledLinkButton>
 			</Link>
 		)
 	}
 	return (
-		<StyledButton
-			info={info}
-			transparent={transparent}
-			noBg={noBg}
-			noText={noText}
-			onClick={onClick}
-			className={newClasses}
-			id={id}
-		>
+		<StyledButton {...props} className={newClasses}>
 			{loading && (
 				<div className="button-loader">
 					<Loader spinner fetching={loading} />
@@ -259,8 +285,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
 				</StyledButtonImage>
 			)}
 			{icon && (
-				<Icon
-					css={buttonIconStyle}
+				<StyledButtonIcon
 					className="button-icon"
 					name={icon}
 					custom={customIcon ? icon : ""}
