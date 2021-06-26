@@ -82,7 +82,7 @@ const StyledButtonIcon = styled(Icon)`
 	margin-right: 2px;
 `
 
-const StyledButton = styled.div<ButtonProps>`
+export const StyledButton = styled.div<ButtonProps>`
 	padding: ${({ noPadding }) => (noPadding ? 0 : buttonPadding)};
 	cursor: pointer;
 	border-radius: ${buttonBorderRadius};
@@ -214,7 +214,7 @@ const StyledButton = styled.div<ButtonProps>`
 	`}
 `
 
-const StyledLinkButton = StyledButton.withComponent("a")
+export const StyledLinkButton = StyledButton.withComponent("a")
 
 export const Button: FunctionComponent<ButtonProps> = (props) => {
 	const {
