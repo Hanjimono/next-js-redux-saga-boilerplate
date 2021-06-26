@@ -253,7 +253,7 @@ export const Button: FunctionComponent<ButtonProps> = (props) => {
 	if (link) {
 		return (
 			<Link href={link} passHref>
-				<StyledLinkButton className={newClasses} {...props}>
+				<StyledLinkButton {...props} className={newClasses}>
 					{image && (
 						<StyledButtonImage className="button-image">
 							<img src={image} />

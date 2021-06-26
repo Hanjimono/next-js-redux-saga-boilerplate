@@ -14,6 +14,7 @@ function Demo(props) {
   return (
     <Container flex maxHeight>
       <Row basis={1/3}>
+        <Loader fetching></Loader>
         <Col basis={1/2}></Col>
         <Col></Col>
         <Col></Col>
