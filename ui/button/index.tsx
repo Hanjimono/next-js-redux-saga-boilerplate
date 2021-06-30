@@ -24,7 +24,7 @@ import {
 import Icon from "../icon"
 import classNames from "classnames"
 import Link from "next/link"
-import Loader from "../loader"
+import { Loader, StyledLoader } from "../loader"
 
 interface ButtonProps {
 	/** on click function */
@@ -67,6 +67,8 @@ interface ButtonProps {
 	wide?: boolean
 }
 
+const StyledButtonLoader = styled.div``
+
 const StyledButtonImage = styled.div`
 	width: 24px;
 	height: 24px;
@@ -107,8 +109,13 @@ export const StyledButton = styled.div<ButtonProps>`
 			opacity: 1;
 		}
 	}
-	${({ disabled }) =>
-		disabled &&
+	${StyledLoader} {
+		> div:after {
+			background-color: ${buttonTextColor};
+		}
+	}
+	${({ disabled, loading }) =>
+		(disabled || loading) &&
 		`
 		opacity: 0.7;
 		pointer-events: none;
@@ -165,6 +172,30 @@ export const StyledButton = styled.div<ButtonProps>`
 			color: ${info && buttonInfoColor};
 			color: ${cancel && buttonCancelColor};
 		}
+		${StyledButtonLoader} {
+			${StyledLoader} {
+				> div:after {
+					background-color: ${buttonColor};
+					background-color: ${info && buttonInfoColor};
+					background-color: ${cancel && buttonCancelColor};
+				}
+			}
+		}
+	`}
+	${({ loading }) =>
+		loading &&
+		`
+		overflow: hidden;
+
+		${StyledButtonLoader} {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			background-color: #ffffff4a;
+			opacity: 1;
+		}
 	`}
 	${({ link }) =>
 		!!link &&
@@ -200,6 +231,16 @@ export const StyledButton = styled.div<ButtonProps>`
 				color: ${buttonTransparentColor};
 				color: ${info && buttonInfoColor};
 				color: ${cancel && buttonCancelColor};
+			}
+			
+			${StyledButtonLoader} {
+				${StyledLoader} {
+					> div:after {
+						background-color: ${buttonTransparentColor};
+						background-color: ${info && buttonInfoColor};
+						background-color: ${cancel && buttonCancelColor};
+					}
+				}
 			}
 		`}
   min-height: ${({ noText }) => noText && `22px`};
@@ -275,9 +316,9 @@ export const Button: FunctionComponent<ButtonProps> = (props) => {
 	return (
 		<StyledButton {...props} className={newClasses}>
 			{loading && (
-				<div className="button-loader">
+				<StyledButtonLoader className="button-loader">
 					<Loader spinner fetching={loading} />
-				</div>
+				</StyledButtonLoader>
 			)}
 			{image && (
 				<StyledButtonImage className="button-image">

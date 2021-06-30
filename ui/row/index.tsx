@@ -34,7 +34,7 @@ export const Row: FunctionComponent<RowProps> = ({
 				flex: ${!noGrow && 1};
 				flex-grow: ${basis && 0};
 				flex-basis: ${basis && basis * 100 + "%"};
-				width: ${basis && basis * 100 + "%"};
+				height: ${basis && basis * 100 + "%"};
 			`}
 			className={newClasses}
 		>

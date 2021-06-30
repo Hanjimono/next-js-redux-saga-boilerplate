@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react"
 import React from 'react'
 import PropTypes from 'prop-types'
 import DemoForm from "./form"
@@ -13,7 +15,7 @@ function Demo(props) {
   const onOpenModalClick = () => popup("alert", {title: "Alert", text: "This is an alert modal"})
   return (
     <Container flex maxHeight>
-      <Row basis={1/3}>
+      <Row css={css`position:relative;`} basis={1/3}>
         <Loader fetching></Loader>
         <Col basis={1/2}></Col>
         <Col></Col>

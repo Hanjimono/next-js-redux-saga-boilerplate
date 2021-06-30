@@ -20,7 +20,7 @@ interface LoaderProps {
 	overlay?: boolean
 }
 
-const StyledLoader = styled.div<LoaderProps>`
+export const StyledLoader = styled.div<LoaderProps>`
 	display: inline-block;
 	position: relative;
 	width: 80px;
