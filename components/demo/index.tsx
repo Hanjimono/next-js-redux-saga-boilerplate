@@ -9,19 +9,20 @@ import Col from "Ui/col"
 import Button from 'Ui/button'
 import ButtonLine from "Ui/buttonLine"
 import Loader from "Ui/loader"
+import {Form} from "Ui/form"
 import {popup} from "Services/globalEvents"
 
 function Demo(props) {
   const onOpenModalClick = () => popup("alert", {title: "Alert", text: "This is an alert modal"})
   return (
     <Container flex maxHeight>
+      <Form><div>123</div><div>444</div></Form>
       <Row css={css`position:relative;`} basis={1/3}>
         <Loader fetching></Loader>
         <Col basis={1/2}></Col>
         <Col></Col>
         <Col></Col>
       </Row>
-      <DemoForm />
       <Row>
         <Col>
           <ButtonLine>

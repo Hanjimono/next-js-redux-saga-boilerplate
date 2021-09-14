@@ -31,6 +31,7 @@ const renderFields = (children, params) => {
 export function Form(props) {
 	const { className, classes, children, apiErrors } = props
 	const newClasses = classNames(className, classes, "form")
+	return null;
 	return (
 		<form className={newClasses}>{renderFields(children, { apiErrors })}</form>
 	)
