@@ -119,7 +119,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = (props) => {
 		}
 	}
 	return (
-		<StyledCheckboxContainer className={newClasses}>
+		<StyledCheckboxContainer {...props} onChange={undefined} className={newClasses}>
 			<label htmlFor={name}>
 				{value !== undefined && (
 					<input
